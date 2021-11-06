@@ -1,0 +1,149 @@
+﻿@model List<ProjectTaskViewModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="General">
+    <div class="Users">
+        Задачи
+    </div>
+    <div class="divMenu">
+        <!-- <div class="imgButtonLeft">
+            <a href="/register/index"><img src="Plus.png"></a>
+        </div> -->
+        <div class="imgButton">
+            <!-- <button class="edit"><img src="change.png"></button> -->
+            <a href="#popup" class="popup_link"><img src="change.png"></a>
+        </div>
+        <div class="imgButton">
+            <button class="delete"><img src="del.png"></button>
+
+        </div>
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Фамилия">
+        <div class="imgButton" style="margin: 0 0 0 40px">
+            <div style="display: flex; justify-content: flex-end; font-size: 12px;">
+                <div style="margin: 0 10px 0 10px"><a href="/user/index">Пользователи</a></div>
+                <div style="margin: 0 10px 0 10px"><a href="/project/formalltasks">Все задачи по проектам</a></div>
+            </div>
+            <div style="display: flex; justify-content: flex-end; font-size: 12px;">
+                <div style="margin: 0 10px 0 10px"><a href="/project/index">Проекты</a></div>
+                <div style="margin: 0 10px 0 10px"><a href="/user/index">Все задачи по исполнителям</a></div>
+            </div>
+        </div>
+
+    </div>
+    <div class="divTable">
+        <table id="myTable">
+            <tr class="header">
+                <th>
+                    ID
+                </th>
+                <th>
+                    Приоритет
+                </th>
+                <th>
+                    Название проекта
+                </th>
+                <th>
+                    Имя
+                </th>
+                <th>
+                    Фамилия
+                </th>
+                <th>
+                    Тема задачи
+                </th>
+
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr position="Roman">
+                    <td>
+                        @item.Id
+                    </td>
+                    <td>
+                        @item.Priority
+                    </td>
+                    <td>
+                        @item.Project.Name
+                    </td>
+                    <td>
+                        @item.User.Name
+                    </td>
+                    <td>
+                        @item.User.SerName
+                    </td>
+                    <td>
+                        @item.Topic
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+    <div class="divInput">
+        <div>
+            <p>Форма добавления задачи</p>
+        </div>
+        <form action="~/Home/AddingNewTask" method="post" id="form" style="display: flex; justify-content: space-between;">
+
+            <div>
+                <label>
+                    Фамилия:
+                </label>
+                <select name="userId">
+                    
+                    @{
+                        foreach(var item in Model[0].userViewModels)
+                        {
+                                        <option value="@item.Id">
+                                            @item.SerName
+                                        </option>
+                        }
+
+                        }
+                </select>
+            </div>
+            <div>
+                <label>
+                    Проект:
+                </label>
+                <select name="projectId">
+                    
+                    @{
+                        foreach (var item in Model[0].projectViewModels)
+                        {
+                            <option value="@item.Id">
+                                @item.Name
+                            </option>
+                        }
+
+                    }
+
+                </select>
+            </div>
+            <div>
+                <label>
+                    Приоритет:
+                    <input type="text" name="priority" value="">
+                </label>
+            </div>
+            <div>
+                <label>
+                    Тема задачи:
+                    <input type="text" name="topic" value="">
+                </label>
+            </div>
+            <!-- <div>
+              <label>
+                Номер заявки:
+                <input type="text" name="number" value="">
+              </label>
+            </div> -->
+            <div>
+                <button class="formRequest" type="submit">Отправить</button>
+            </div>
+        </form>
+    </div>
+</div>
+

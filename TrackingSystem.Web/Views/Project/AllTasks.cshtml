@@ -1,0 +1,29 @@
+﻿@model ProjectViewModel
+
+<div class="General" style="width: 730px; margin: 125px auto; background-color: #d5e8d4; padding-bottom: 10px; border: 1px solid grey;">
+    <div class="Users">
+        Проекты
+    </div>
+    <div class="divMenu">
+        <!-- <div class="imgButtonLeft">
+            <a href="/register/index"><img src="Plus.png"></a>
+        </div> -->
+        <div class="imgButton">
+            <!-- <button class="edit"><img src="change.png"></button> -->
+            <a href="#popup" class="popup_link"><img src="change.png"></a>
+        </div>
+        <div class="imgButton">
+            <button class="delete"><img src="del.png"></button>
+
+        </div>
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Фамилия">
+    </div>
+    <div style="display: flex; justify-content: space-between;">
+        <div>
+            @foreach(var item in Model.Tasks)
+            {
+                @item.Topic
+            }
+        </div>
+    </div>
+</div>

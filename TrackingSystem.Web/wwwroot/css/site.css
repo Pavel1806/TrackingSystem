@@ -1,0 +1,349 @@
+
+.General {
+    width: 730px;
+    margin: 125px auto;
+    background-color: #d5e8d4;
+    padding-bottom: 10px;
+    border: 1px solid grey;
+}
+
+.General2 {
+    width: 650px;
+    margin: 105px auto;
+    background-color: #d5e8d4;
+    padding-bottom: 10px;
+    border: 1px solid grey;
+}
+
+.Users {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 30px;
+    vertical-align: middle;
+    height: 30px;
+}
+
+.User {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 30px;
+    vertical-align: middle;
+    height: 30px;
+}
+
+.accountTable {
+    width: 620px;
+    height: 200px;
+    margin: 0px 15px 10px 15px;
+    background-color: #ffffff;
+    border: 1px solid grey;
+}
+
+.inAccountTable {
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.accountForm, .profileForm {
+    margin-top: 15px
+}
+
+    .accountForm label, .profileForm label {
+        margin-left: 25px
+    }
+
+    .accountForm div, .profileForm div {
+        margin-top: 20px;
+    }
+
+    .profileForm select {
+        display: inline-block;
+        float: right;
+        margin-right: 25px;
+        width: 326px;
+        height: 21px;
+    }
+
+.profileTable {
+    width: 620px;
+    height: 300px;
+    margin: 10px 15px 0px 15px;
+    background-color: #ffffff;
+    border: 1px solid grey;
+}
+
+.inProfileTable {
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.input {
+    display: inline-block;
+    float: right;
+    margin-right: 25px;
+    width: 318px;
+}
+
+.submit {
+    display: inline-block;
+    color: white;
+    background-color: #60a917;
+    float: right;
+    margin-right: 25px;
+    width: 120px;
+}
+
+.divMenu {
+    width: 700px;
+    height: 30px;
+    margin: 0px 15px 10px 15px;
+    background-color: #ffffff;
+    border: 1px solid grey;
+}
+
+#myTable tr.header {
+    background-color: #f1f1f1;
+}
+
+#myInput {
+    display: inline-block;
+    position: relative;
+    left: 15px;
+    bottom: 3px;
+}
+
+#myTable {
+    padding: 10px;
+    margin: 0;
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+div img {
+    position: relative;
+    top: 4px;
+}
+
+.imgButton {
+    display: inline-block;
+}
+
+.imgButtonLeft {
+    display: inline-block;
+    margin-right: 4px;
+}
+
+.divTable {
+    width: 700px;
+    height: 300px;
+    margin: 10px 15px 0px 15px;
+    background-color: #ffffff;
+    border: 1px solid grey;
+}
+
+.divDepartment {
+    display: inline-block;
+    position: relative;
+    left: 115px;
+    bottom: 3px;
+}
+
+.selectDepartment {
+    display: inline-block;
+    position: relative;
+    left: 115px;
+    bottom: 3px;
+}
+
+.selected {
+    background-color: #f1f1f1;
+}
+
+tr {
+    cursor: pointer;
+    height: 30px
+}
+
+th {
+    border-bottom: 1px solid grey;
+    border-left: 1px solid grey;
+}
+
+td {
+    border-bottom: 1px solid grey;
+    border-left: 1px solid grey;
+}
+
+button {
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+}
+
+    button .edit, button .delete {
+        float: left;
+    }
+
+.submitError {
+    color: white;
+    background-color: #60a917;
+    width: 150px;
+    margin-left: 220px;
+}
+
+.text {
+    font-size: 12px;
+}
+
+.styled {
+    border: 0;
+    line-height: 1.5;
+    padding: 0 10px;
+    font-size: 1rem;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 10px;
+    background-color: rgba(220, 0, 0, 1);
+    background-image: linear-gradient(to top left,
+                                      rgba(0, 0, 0, .2),
+                                      rgba(0, 0, 0, .2) 30%,
+                                      rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+                inset -2px -2px 3px rgba(0, 0, 0, .6);
+}
+
+.styled:hover {
+    background-color: rgba(255, 0, 0, 1);
+}
+
+.styled:active {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+                inset 2px 2px 3px rgba(0, 0, 0, .6);
+}
+
+form div {
+    
+    width: 100px;
+    
+}
+form input {
+    
+    width: 130px;
+    
+    
+}
+form label {
+
+    font-weight: bold;
+}
+
+form{
+    margin: 0 0 0 15px;
+}
+
+.divInput div p{
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
+    margin: 0;
+
+
+}
+
+.popup{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+}
+.popup.open{
+    opacity: 1;
+    visibility: visible;
+}
+.popup_body{
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 10px;
+}
+.popup_content{
+    background-color: #ffffff;
+    max-width: 800px;
+    min-width: 780px;
+    padding: 20px;
+    position: relative;
+    
+}
+.popup_close{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 20px;
+    color: #000000;
+    text-decoration: none;
+
+
+    
+}
+.popup_title{
+    
+}
+.popup_text{
+    
+}
+
+#popup_form div{
+
+    width: 130px;
+    
+}
+
+#popup_form input{
+
+    width: 130px;
+}
+#popup_form label{
+
+    width: 130px;
+}
+
+.formRequest{
+    width: 80px;
+    height: 20px;
+    background-color: #f1f1f1;
+    margin: 19px 0 0 10px;
+}
+
+input:invalid {
+  border: 2px dashed red;
+}
+
+input:invalid:required {
+  background-image: pink;
+}
+
+input:valid {
+  border: 2px solid black;
+}
+
+select:invalid {
+    border: 2px dashed red;
+}
+
+select:invalid:required {
+    background-image: pink;
+}
+
+select:valid {
+    border: 2px solid black;
+}
