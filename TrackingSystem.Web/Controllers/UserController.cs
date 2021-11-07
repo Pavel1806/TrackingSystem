@@ -34,8 +34,6 @@ namespace TrackingSystem.Web.Controllers
 
         public IActionResult AddingNewUser(string name, string sername)
         {
-
-
              _userServices.Create(
                 new UserDTO { 
                  Name= name,
@@ -44,9 +42,23 @@ namespace TrackingSystem.Web.Controllers
 
             return RedirectToAction("Index", "User");
 
+        }
 
+        public IActionResult AllTasks(int id)
+        {
+            var userDTO = _userServices.GetById(id);
+            var listTasks = new List<ProjectTaskViewModel>();
+            foreach(var item in userDTO.Tasks)
+            {
+                listTasks.Add(new ProjectTaskViewModel {  Id=item.Id, Priority=item.Priority, Topic=item.Topic, Type=item.Type, 
+                    Project = new ProjectViewModel { 
+                         Id=item.projectDTO.Id,
+                         Name=item.projectDTO.Name
+                } });
+            }
+            UserViewModel userViewModel = new UserViewModel { Id = userDTO.Id, Name = userDTO.Name, SerName = userDTO.SerName, Tasks = listTasks};
 
-
+            return View(userViewModel);
         }
 
         public IActionResult Privacy()

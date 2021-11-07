@@ -63,7 +63,9 @@ namespace TrackingSystem.BLL.Services
                  Topic= projectTask[i].Topic,
                  Type = projectTask[i].Type,
                  projectDTO = new ProjectDTO {Id= projectTask[i].project.Id, Name= projectTask[i].project.Name},
-                 userDTO = new UserDTO { Id= projectTask[i].user.Id, Name= projectTask[i].user.Name, SerName= projectTask[i].user.SerName}
+                 userDTO = new UserDTO { Id= projectTask[i].user.Id, Name= projectTask[i].user.Name, SerName= projectTask[i].user.SerName},
+                 projectId = projectTask[i].ProjectId,
+                 userId= projectTask[i].UserId
                 });
             }
 

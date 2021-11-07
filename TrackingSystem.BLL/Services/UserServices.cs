@@ -41,7 +41,25 @@ namespace TrackingSystem.BLL.Services
 
         public UserDTO GetById(int id)
         {
-            throw new NotImplementedException();
+            var user = db.users.GetById(id);
+            var tasks = db.projectTasks.GetAllUserId(id); 
+            var listTasks = new List<ProjectTaskDTO>();
+            foreach (var item in tasks)
+            {
+                Project project = db.projects.GetById(item.ProjectId);
+                listTasks.Add(new ProjectTaskDTO
+                {
+                    Id = item.Id,
+                    Priority = item.Priority,
+                    Topic = item.Topic,
+                    Type = item.Type,
+                    projectId = item.ProjectId,
+                    projectDTO = new ProjectDTO { Id = user.Id, Name = user.Name}
+                });
+            }
+            UserDTO userDTO = new UserDTO { Id = user.Id, Name = user.Name, SerName = user.SerName, Tasks = listTasks };
+
+            return userDTO;
         }
 
         public void Update(UserDTO t)

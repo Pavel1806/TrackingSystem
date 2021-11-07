@@ -43,9 +43,11 @@ namespace TrackingSystem.DAL.Repositories
                      Topic=t.Topic,
                      Type= t.Type,
                      Project = new Project { Id=s.Id, Name=s.Name},
-                     id=t.UserId
+                     userid=t.UserId,
+                     projectid = t.ProjectId
+
                      
-                }).Join(_dbContext.Users, t=>t.id, s=>s.Id,
+                }).Join(_dbContext.Users, t=>t.userid, s=>s.Id,
                 (t,s)=> new ProjectTask
                 {
                      Id=t.Id,
@@ -53,16 +55,29 @@ namespace TrackingSystem.DAL.Repositories
                      Topic=t.Topic,
                      Type=t.Type,
                      project=t.Project,
-                     user=new User { Id=s.Id, Name=s.Name, SerName=s.SerName}
+                     user=new User { Id=s.Id, Name=s.Name, SerName=s.SerName},
+                     UserId = t.userid,
+                     ProjectId = t.projectid
                 }
                 ).ToList();
 
             return t;
         }
+        //public List<ProjectTask> GetAllUsers()
+
 
         public ProjectTask GetById(int id)
         {
             return _dbContext.ProjectTasks.Where(x => x.Id == id).FirstOrDefault();
+        }
+
+        public List<ProjectTask> GetAllUserId(int userid)
+        {
+            return _dbContext.ProjectTasks.Where(x => x.UserId == userid).ToList();
+        }
+        public List<ProjectTask> GetAllProjectId(int projectid)
+        {
+            return _dbContext.ProjectTasks.Where(x => x.ProjectId == projectid).ToList();
         }
 
         public void Update(ProjectTask task)

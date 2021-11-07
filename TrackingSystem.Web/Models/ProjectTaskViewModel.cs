@@ -13,6 +13,8 @@ namespace TrackingSystem.Web.Models
         public string Type { get; set; }
         public ProjectViewModel Project { get; set; }
         public UserViewModel User { get; set; }
+        public int projectId { get; set; }
+        public int userId { get; set; }
         public List<ProjectViewModel> projectViewModels { get; set; }
         public List<UserViewModel> userViewModels { get; set; }
 

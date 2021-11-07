@@ -13,21 +13,21 @@
         </div> -->
         <div class="imgButton">
             <!-- <button class="edit"><img src="change.png"></button> -->
-            <a href="#popup" class="popup_link"><img src="change.png"></a>
+            <a href="#popup" class="popup_link"><img src="/change.png"></a>
         </div>
         <div class="imgButton">
-            <button class="delete"><img src="del.png"></button>
+            <button class="delete"><img src="/del.png"></button>
 
         </div>
         <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Фамилия">
         <div class="imgButton" style="margin: 0 0 0 40px">
             <div style="display: flex; justify-content: flex-end; font-size: 12px;">
                 <div style="margin: 0 10px 0 10px"><a href="/user/index">Пользователи</a></div>
-                <div style="margin: 0 10px 0 10px"><a href="/project/formalltasks">Все задачи по проектам</a></div>
+                <button class="tasksProoject" style="margin: 0 10px 0 10px">Все задачи по проектам</button>
             </div>
             <div style="display: flex; justify-content: flex-end; font-size: 12px;">
                 <div style="margin: 0 10px 0 10px"><a href="/project/index">Проекты</a></div>
-                <div style="margin: 0 10px 0 10px"><a href="/user/index">Все задачи по исполнителям</a></div>
+                <button class="tasksUser" style="margin: 0 10px 0 10px">Все задачи по исполнителям</button>
             </div>
         </div>
 
@@ -53,30 +53,42 @@
                 <th>
                     Тема задачи
                 </th>
+                <th hidden>
+                    userId
+                </th>
+                <th hidden>
+                    projectId
+                </th>
 
             </tr>
             @foreach (var item in Model)
             {
-                <tr position="Roman">
-                    <td>
-                        @item.Id
-                    </td>
-                    <td>
-                        @item.Priority
-                    </td>
-                    <td>
-                        @item.Project.Name
-                    </td>
-                    <td>
-                        @item.User.Name
-                    </td>
-                    <td>
-                        @item.User.SerName
-                    </td>
-                    <td>
-                        @item.Topic
-                    </td>
-                </tr>
+        <tr position="Roman">
+            <td>
+                @item.Id
+            </td>
+            <td>
+                @item.Priority
+            </td>
+            <td>
+                @item.Project.Name
+            </td>
+            <td>
+                @item.User.Name
+            </td>
+            <td>
+                @item.User.SerName
+            </td>
+            <td>
+                @item.Topic
+            </td>
+            <td hidden>
+                @item.userId
+            </td>
+            <td hidden>
+                @item.projectId
+            </td>
+        </tr>
             }
 
         </table>

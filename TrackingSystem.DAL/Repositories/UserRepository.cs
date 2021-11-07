@@ -33,6 +33,16 @@ namespace TrackingSystem.DAL.Repositories
             return _dbContext.Users.OrderBy(x => x.Id).ToList<User>();
         }
 
+        public List<User> GetAllProjectId(int projectid)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<User> GetAllUserId(int userid)
+        {
+            throw new NotImplementedException();
+        }
+
         public User GetById(int id)
         {
             return _dbContext.Users.Where(x => x.Id == id).FirstOrDefault();

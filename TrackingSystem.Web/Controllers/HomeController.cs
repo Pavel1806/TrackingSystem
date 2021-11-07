@@ -58,7 +58,9 @@ namespace TrackingSystem.Web.Controllers
                     Project = new ProjectViewModel { Id = projectTask[i].projectDTO.Id, Name = projectTask[i].projectDTO.Name },
                     User = new UserViewModel { Id = projectTask[i].userDTO.Id, Name = projectTask[i].userDTO.Name, SerName = projectTask[i].userDTO.SerName },
                     projectViewModels = projectVW,
-                    userViewModels= userVW
+                    userViewModels= userVW,
+                    projectId = projectTask[i].projectId,
+                    userId = projectTask[i].userId
                 }) ;
             }
             return View(taskDTOs);

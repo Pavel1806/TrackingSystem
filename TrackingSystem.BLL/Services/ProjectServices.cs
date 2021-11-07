@@ -56,14 +56,20 @@ namespace TrackingSystem.BLL.Services
         public ProjectDTO GetById(int id)
         {
             var project = db.projects.GetById(id);
+            
+            var projectTasks = db.projectTasks.GetAllProjectId(id);
             var listTasks = new List<ProjectTaskDTO>();
-            foreach (var item in project.Tasks)
+            foreach (var item in projectTasks)
             {
+                User user = db.users.GetById(item.UserId);
+
                 listTasks.Add(new ProjectTaskDTO { 
                  Id= item.Id,
-                  Priority= item.Priority,
-                   Topic=item.Topic,
-                    Type=item.Type
+                 Priority= item.Priority,
+                 Topic=item.Topic,
+                 Type=item.Type,
+                 userId = item.UserId,
+                 userDTO =  new UserDTO { Id = user.Id, Name = user.Name, SerName= user.SerName}
                 });
             }
 

@@ -33,11 +33,20 @@ namespace TrackingSystem.DAL.Repositories
             return _dbContext.Projects.OrderBy(x => x.Id).ToList<Project>();
         }
 
+        public List<Project> GetAllProjectId(int projectid)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Project> GetAllUserId(int userid)
+        {
+            throw new NotImplementedException();
+        }
+
         public Project GetById(int id)
         {
             var t = _dbContext.Projects.Where(x => x.Id == id).FirstOrDefault();
 
-            var u = t.Tasks;
             return t;
         }
 
@@ -45,5 +54,7 @@ namespace TrackingSystem.DAL.Repositories
         {
             _dbContext.Update(project);
         }
+
+        
     }
 }

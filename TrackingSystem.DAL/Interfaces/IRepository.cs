@@ -11,5 +11,7 @@ namespace TrackingSystem.DAL.Interfaces
         void Create(T t);
         void Delete(T t);
         void Update(T t);
+        List<T> GetAllUserId(int userid);
+        List<T> GetAllProjectId(int projectid);
     }
 }
