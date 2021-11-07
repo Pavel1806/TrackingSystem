@@ -44,21 +44,38 @@ namespace TrackingSystem.Web.Controllers
 
         public IActionResult AllTasks(int id)
         {
-            var projectDTO = _projectServices.GetById(id);
-            var listTasks = new List<ProjectTaskViewModel>();
-            foreach (var item in projectDTO.Tasks)
+            if(id == 0)
             {
-                
-                listTasks.Add(new ProjectTaskViewModel { Id = item.Id, Priority = item.Priority, Topic = item.Topic, Type = item.Type, 
-                    User= new UserViewModel { 
-                        Id= item.userDTO.Id, 
-                        Name= item.userDTO.Name, 
-                        SerName=item.userDTO.SerName, 
-                } });
-            }
-            ProjectViewModel projectViewModel = new ProjectViewModel { Id = projectDTO.Id, Name = projectDTO.Name, Tasks = listTasks };
+                return RedirectToAction("Error", "Home");
 
-            return View(projectViewModel);
+            }
+            else
+            {
+                var projectDTO = _projectServices.GetById(id);
+                var listTasks = new List<ProjectTaskViewModel>();
+                foreach (var item in projectDTO.Tasks)
+                {
+
+                    listTasks.Add(new ProjectTaskViewModel
+                    {
+                        Id = item.Id,
+                        Priority = item.Priority,
+                        Topic = item.Topic,
+                        Type = item.Type,
+                        User = new UserViewModel
+                        {
+                            Id = item.userDTO.Id,
+                            Name = item.userDTO.Name,
+                            SerName = item.userDTO.SerName,
+                        }
+                    });
+                }
+                ProjectViewModel projectViewModel = new ProjectViewModel { Id = projectDTO.Id, Name = projectDTO.Name, Tasks = listTasks };
+
+                return View(projectViewModel);
+            }
+            
+            
         }
         public IActionResult Privacy()
         {

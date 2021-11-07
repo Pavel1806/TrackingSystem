@@ -46,19 +46,37 @@ namespace TrackingSystem.Web.Controllers
 
         public IActionResult AllTasks(int id)
         {
-            var userDTO = _userServices.GetById(id);
-            var listTasks = new List<ProjectTaskViewModel>();
-            foreach(var item in userDTO.Tasks)
+            if (id == 0)
             {
-                listTasks.Add(new ProjectTaskViewModel {  Id=item.Id, Priority=item.Priority, Topic=item.Topic, Type=item.Type, 
-                    Project = new ProjectViewModel { 
-                         Id=item.projectDTO.Id,
-                         Name=item.projectDTO.Name
-                } });
-            }
-            UserViewModel userViewModel = new UserViewModel { Id = userDTO.Id, Name = userDTO.Name, SerName = userDTO.SerName, Tasks = listTasks};
+                return RedirectToAction("Error", "Home");
 
-            return View(userViewModel);
+            }
+            else
+            {
+                var userDTO = _userServices.GetById(id);
+                var listTasks = new List<ProjectTaskViewModel>();
+                foreach (var item in userDTO.Tasks)
+                {
+                    listTasks.Add(new ProjectTaskViewModel
+                    {
+                        Id = item.Id,
+                        Priority = item.Priority,
+                        Topic = item.Topic,
+                        Type = item.Type,
+                        Project = new ProjectViewModel
+                        {
+                            Id = item.projectDTO.Id,
+                            Name = item.projectDTO.Name
+                        }
+                    });
+                }
+                UserViewModel userViewModel = new UserViewModel { Id = userDTO.Id, Name = userDTO.Name, SerName = userDTO.SerName, Tasks = listTasks };
+
+                return View(userViewModel);
+
+            }
+
+            
         }
 
         public IActionResult Privacy()

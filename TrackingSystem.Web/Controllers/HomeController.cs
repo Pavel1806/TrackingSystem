@@ -66,19 +66,25 @@ namespace TrackingSystem.Web.Controllers
             return View(taskDTOs);
         }
 
-        public IActionResult AddingNewTask(int projectId, int userId, string priority, string topic)
+        public IActionResult AddingNewTask(int projectId, int userId, string priority, string topic, string type)
         {
             _projectTaskServices.Create(
-                new ProjectTaskDTO { Priority= priority ,  projectId= projectId, userId= userId, Topic= topic}
+                new ProjectTaskDTO { Priority= priority ,  projectId= projectId, userId= userId, Topic= topic, Type= type }
                 );
 
             return RedirectToAction("Index", "Home");
         }
 
+
+        public IActionResult Delete(int id)
+        {
+            _projectTaskServices.Delete(id);
+
+            return RedirectToAction("Index", "Home");
+        }
         public IActionResult Privacy()
         {
            
-
             return View();
         }
 

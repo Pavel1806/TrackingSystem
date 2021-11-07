@@ -9,35 +9,29 @@
     </div>
     <div class="divMenu">
         <!-- <div class="imgButtonLeft">
-            <a href="/register/index"><img src="Plus.png"></a>
-        </div> -->
+        <a href="/register/index"><img src="Plus.png"></a>
+    </div> -->
         <div class="imgButton">
-            <!-- <button class="edit"><img src="change.png"></button> -->
-            <a href="#popup" class="popup_link"><img src="/change.png"></a>
+            <button class="edit"><img src="/change.png"></button>
         </div>
         <div class="imgButton">
             <button class="delete"><img src="/del.png"></button>
+        </div>
 
-        </div>
-        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Фамилия">
-        <div class="imgButton" style="margin: 0 0 0 40px">
-            <div style="display: flex; justify-content: flex-end; font-size: 12px;">
-                <div style="margin: 0 10px 0 10px"><a href="/user/index">Пользователи</a></div>
-                <button class="tasksProoject" style="margin: 0 10px 0 10px">Все задачи по проектам</button>
-            </div>
-            <div style="display: flex; justify-content: flex-end; font-size: 12px;">
-                <div style="margin: 0 10px 0 10px"><a href="/project/index">Проекты</a></div>
-                <button class="tasksUser" style="margin: 0 10px 0 10px">Все задачи по исполнителям</button>
-            </div>
-        </div>
+        <div class="imgButton" style="margin: 0 10px 0 10px; font-family: Arial; font-size: 12px;"><a href="/user/index">Пользователи</a></div>
+        <div class="imgButton" style="margin: 0 10px 0 10px; font-family: Arial; font-size: 12px;"><a href="/project/index">Проекты</a></div>
+        <button class="tasksProoject imgButton" style="margin: 0 10px 0 10px; font-size: 12px; font-family: Arial; text-decoration: underline;">Все задачи по проектам</button>
+        <button class="tasksUser imgButton" style="margin: 0 10px 0 10px; font-size: 12px; font-family: Arial; text-decoration: underline;">Все задачи по исполнителям</button>
+
 
     </div>
     <div class="divTable">
         <table id="myTable">
             <tr class="header">
-                <th>
+                <th hidden>
                     ID
                 </th>
+
                 <th>
                     Приоритет
                 </th>
@@ -53,6 +47,9 @@
                 <th>
                     Тема задачи
                 </th>
+                <th>
+                    Тип задачи
+                </th>
                 <th hidden>
                     userId
                 </th>
@@ -64,9 +61,10 @@
             @foreach (var item in Model)
             {
         <tr position="Roman">
-            <td>
+            <td hidden>
                 @item.Id
             </td>
+
             <td>
                 @item.Priority
             </td>
@@ -81,6 +79,9 @@
             </td>
             <td>
                 @item.Topic
+            </td>
+            <td>
+                @item.Type
             </td>
             <td hidden>
                 @item.userId
@@ -108,9 +109,9 @@
                     @{
                         foreach(var item in Model[0].userViewModels)
                         {
-                                        <option value="@item.Id">
-                                            @item.SerName
-                                        </option>
+                             <option value="@item.Id">
+                                @item.SerName
+                             </option>
                         }
 
                         }
@@ -131,27 +132,36 @@
                         }
 
                     }
-
                 </select>
             </div>
             <div>
                 <label>
                     Приоритет:
-                    <input type="text" name="priority" value="">
                 </label>
+                <select name="priority" style="width: 120px">
+                    <option value="в процессе">
+                        в процессе
+                    </option>
+                    <option value="горит">
+                        горит
+                    </option>
+                    <option value="выполнена">
+                        выполнена
+                    </option>
+                </select>
             </div>
             <div>
                 <label>
                     Тема задачи:
-                    <input type="text" name="topic" value="">
+                    <input type="text" name="topic" value="" style="width: 120px; height:15.1px;">
                 </label>
             </div>
-            <!-- <div>
-              <label>
-                Номер заявки:
-                <input type="text" name="number" value="">
-              </label>
-            </div> -->
+             <div>
+                  <label>
+                    Тип задачи:
+                    <input type="text" name="type" value="" style="width: 120px; height:15.1px; ">
+                  </label>
+            </div> 
             <div>
                 <button class="formRequest" type="submit">Отправить</button>
             </div>

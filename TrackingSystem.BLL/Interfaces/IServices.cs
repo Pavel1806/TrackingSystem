@@ -10,7 +10,7 @@ namespace TrackingSystem.BLL.Interfaces
         List<T> GetAll();
         T GetById(int id);
         void Create(T t);
-        void Delete(T t);
+        void Delete(int id);
         void Update(T t);
      
     }

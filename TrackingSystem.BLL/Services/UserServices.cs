@@ -28,7 +28,7 @@ namespace TrackingSystem.BLL.Services
             db.Save();
         }
 
-        public void Delete(UserDTO t)
+        public void Delete(int id)
         {
             throw new NotImplementedException();
         }

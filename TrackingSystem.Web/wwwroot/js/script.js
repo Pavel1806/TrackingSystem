@@ -69,7 +69,7 @@ $(function () {
             const values = [];
             table.querySelectorAll('tr').forEach((tr) => {
                 if (tr.classList.contains('selected')) {
-                    values.push(tr.children[1].textContent.trim());
+                    values.push(tr.children[0].textContent.trim());
                 }
             });
             sendToServer(values);
@@ -77,7 +77,7 @@ $(function () {
         //var r = window.location.href;
         function sendToServer(values) {
             //console.log(values[0]);
-            var body = "email=" + values[0];
+            var body = "id=" + values[0];
             document.location = "/home/delete?" + body;
         }
     }
@@ -100,8 +100,8 @@ $(function () {
             const values = [];
             table.querySelectorAll('tr').forEach((tr) => {
                 if (tr.classList.contains('selected')) {
-                    values.push(tr.children[6].textContent.trim());
-                }
+                    values.push(tr.children[7].textContent.trim());
+                } 
             });
             sendToServer(values);
         });
@@ -132,7 +132,7 @@ $(function () {
             const values = [];
             table.querySelectorAll('tr').forEach((tr) => {
                 if (tr.classList.contains('selected')) {
-                    values.push(tr.children[7].textContent.trim());
+                    values.push(tr.children[8].textContent.trim());
                 }
             });
             sendToServer(values);

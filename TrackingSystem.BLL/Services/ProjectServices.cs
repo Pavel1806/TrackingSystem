@@ -28,12 +28,9 @@ namespace TrackingSystem.BLL.Services
             db.Save();
         }
 
-        public void Delete(ProjectDTO t)
+        public void Delete(int id)
         {
-            var project = new Project
-            {
-                Name = t.Name
-            };
+            var project = db.projects.GetById(id);
 
             db.projects.Delete(project);
             db.Save();

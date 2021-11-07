@@ -40,9 +40,9 @@ namespace TrackingSystem.BLL.Services
             db.Save();
         }
 
-        public void Delete(ProjectTaskDTO t)
+        public void Delete(int id)
         {
-            var projectTask = db.projectTasks.GetById(t.Id);
+            var projectTask = db.projectTasks.GetById(id);
 
             db.projectTasks.Delete(projectTask);
             db.Save();
