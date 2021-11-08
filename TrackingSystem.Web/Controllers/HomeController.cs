@@ -78,49 +78,65 @@ namespace TrackingSystem.Web.Controllers
 
         public IActionResult Delete(int id)
         {
-            _projectTaskServices.Delete(id);
+            if(id!=0)
+            {
+                _projectTaskServices.Delete(id);
 
-            return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return RedirectToAction("Error", "Home");
+            }
+            
         }
 
         public IActionResult Edit(int id, string priority, string topic, string type, string nameproject, string sername, int userId, int projectId )
         {
-            var project = _projectServices.GetAll();
-            var user = _userServices.GetAll();
-
-            var projectVW = new List<ProjectViewModel>();
-            foreach (var item in project)
+            if(id!=0)
             {
-                if(item.Id != projectId)
+                var project = _projectServices.GetAll();
+                var user = _userServices.GetAll();
+
+                var projectVW = new List<ProjectViewModel>();
+                foreach (var item in project)
                 {
-                    projectVW.Add(new ProjectViewModel { Id = item.Id, Name = item.Name });
+                    if (item.Id != projectId)
+                    {
+                        projectVW.Add(new ProjectViewModel { Id = item.Id, Name = item.Name });
+                    }
+
                 }
-                
-            }
-            var userVW = new List<UserViewModel>();
-            foreach (var item in user)
-            {
-                if (item.Id != userId)
+                var userVW = new List<UserViewModel>();
+                foreach (var item in user)
                 {
-                    userVW.Add(new UserViewModel { Id = item.Id, Name = item.Name, SerName = item.SerName });
+                    if (item.Id != userId)
+                    {
+                        userVW.Add(new UserViewModel { Id = item.Id, Name = item.Name, SerName = item.SerName });
+                    }
+
                 }
-                    
+
+                ProjectTaskViewModel projectTaskView = new ProjectTaskViewModel
+                {
+                    Id = id,
+                    Priority = priority,
+                    Topic = topic,
+                    Type = type,
+                    Project = new ProjectViewModel { Name = nameproject, Id = projectId },
+                    User = new UserViewModel { SerName = sername, Id = userId },
+                    projectViewModels = projectVW,
+                    userViewModels = userVW
+                };
+
+
+                return View(projectTaskView);
             }
-
-            ProjectTaskViewModel projectTaskView = new ProjectTaskViewModel
+            else
             {
-                Id= id,
-                Priority = priority,
-                Topic = topic,
-                Type = type,
-                Project = new ProjectViewModel { Name = nameproject, Id= projectId },
-                User = new UserViewModel { SerName = sername, Id= userId },
-                projectViewModels = projectVW,
-                userViewModels = userVW
-            };
-
-
-            return View(projectTaskView);
+                return RedirectToAction("Error", "Home");
+            }
+            
         }
 
         public IActionResult Editing(int id, string priority, string topic, string type, string nameproject, int userId, int projectId)

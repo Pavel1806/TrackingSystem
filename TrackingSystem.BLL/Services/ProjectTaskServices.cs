@@ -68,11 +68,8 @@ namespace TrackingSystem.BLL.Services
                  userId= projectTask[i].UserId
                 });
             }
-
             return taskDTOs;
-
         }
-
         public ProjectTaskDTO GetById(int id)
         {
             var projectTask = db.projectTasks.GetById(id);

@@ -9,12 +9,12 @@
         <!-- <div class="imgButtonLeft">
         <a href="/register/index"><img src="Plus.png"></a>
     </div> -->
-        <div class="imgButton">
+        <!--<div class="imgButton">-->
             <!-- <button class="edit"><img src="change.png"></button> -->
-            <a href="#popup" class="popup_link"><img src="/change.png"></a>
-        </div>
+            <!--<a href="#popup" class="popup_link"><img src="/change.png"></a>
+        </div>-->
         <div class="imgButton">
-            <button class="delete"><img src="/del.png"></button>
+            <button class="projectDelete"><img src="/del.png"></button>
 
         </div>
         @*<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Фамилия">*@
@@ -26,17 +26,23 @@
                 <th>
                     Название проекта
                 </th>
+                <th hidden>
+
+                </th>
 
 
             </tr>
             @foreach (var item in Model)
             {
-                <tr position="Roman">
-                    <td>
-                        @item.Name
-                    </td>
+        <tr position="Roman">
+            <td>
+                @item.Name
+            </td>
+            <td hidden>
+                @item.Id
+            </td>
 
-                </tr>
+        </tr>
             }
 
         </table>

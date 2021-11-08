@@ -30,7 +30,9 @@ namespace TrackingSystem.BLL.Services
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var user = db.users.GetById(id);
+            db.users.Delete(user);
+            db.Save();
         }
 
         public List<UserDTO> GetAll()
@@ -54,7 +56,7 @@ namespace TrackingSystem.BLL.Services
                     Topic = item.Topic,
                     Type = item.Type,
                     projectId = item.ProjectId,
-                    projectDTO = new ProjectDTO { Id = user.Id, Name = user.Name}
+                    projectDTO = new ProjectDTO { Id = project.Id, Name = project.Name}
                 });
             }
             UserDTO userDTO = new UserDTO { Id = user.Id, Name = user.Name, SerName = user.SerName, Tasks = listTasks };

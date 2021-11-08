@@ -17,11 +17,13 @@ namespace TrackingSystem.Web.Controllers
         private readonly ILogger<HomeController> _logger;
 
         private readonly IServices<ProjectDTO> _projectServices;
+        private readonly IServices<ProjectTaskDTO> _projectTaskServices;
 
-        public ProjectController(ILogger<HomeController> logger, IServices<ProjectDTO> projectTask)
+        public ProjectController(ILogger<HomeController> logger, IServices<ProjectDTO> projectTask, IServices<ProjectTaskDTO> task)
         {
             _logger = logger;
             _projectServices = projectTask;
+            _projectTaskServices = task;
         }
 
         public IActionResult Index()
@@ -76,6 +78,40 @@ namespace TrackingSystem.Web.Controllers
             }
             
             
+        }
+
+        public IActionResult Delete(int id)
+        {
+           if(id!=0)
+            {
+                var listTasks = _projectTaskServices.GetAll();
+                bool a = false;
+                foreach (var item in listTasks)
+                {
+                    if (item.projectId == id)
+                    {
+                        a = true;
+                        break;
+                    }
+                }
+                if (a == false)
+                {
+                    _projectServices.Delete(id);
+
+                    return RedirectToAction("Index", "Project");
+                }
+                else
+                {
+                    return RedirectToAction("Error", "Project");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Error", "Home");
+            }
+            
+            
+
         }
         public IActionResult Privacy()
         {

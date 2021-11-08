@@ -96,6 +96,70 @@ $(function () {
 $(function () {
     const str = document.querySelectorAll('table tr');
     const table = document.querySelector('table');
+    const input = document.querySelector('.userDelete');
+    {
+        str.forEach(item => {
+            item.addEventListener('click', (e) => {
+                str.forEach(el => { el.classList.remove('selected'); });
+                item.classList.add('selected')
+            })
+        })
+
+        input.addEventListener('click', (evt) => {
+            const values = [];
+            table.querySelectorAll('tr').forEach((tr) => {
+                if (tr.classList.contains('selected')) {
+                    values.push(tr.children[2].textContent.trim());
+                }
+            });
+            sendToServer(values);
+        });
+        //var r = window.location.href;
+        function sendToServer(values) {
+            console.log(values[0]);
+            var body = "id=" + values[0];
+            document.location = "/user/delete?" + body;
+        }
+    }
+
+});
+
+
+$(function () {
+    const str = document.querySelectorAll('table tr');
+    const table = document.querySelector('table');
+    const input = document.querySelector('.projectDelete');
+    {
+        str.forEach(item => {
+            item.addEventListener('click', (e) => {
+                str.forEach(el => { el.classList.remove('selected'); });
+                item.classList.add('selected')
+            })
+        })
+
+        input.addEventListener('click', (evt) => {
+            const values = [];
+            table.querySelectorAll('tr').forEach((tr) => {
+                if (tr.classList.contains('selected')) {
+                    values.push(tr.children[1].textContent.trim());
+                }
+            });
+            sendToServer(values);
+        });
+        //var r = window.location.href;
+        function sendToServer(values) {
+            console.log(values[0]);
+            var body = "id=" + values[0];
+            document.location = "/project/delete?" + body;
+        }
+    }
+
+});
+
+
+$(function () {
+    const str = document.querySelectorAll('table tr');
+    const table = document.querySelector('table');
     const input = document.querySelector('.tasksUser');
     {
         str.forEach(item => {
@@ -178,3 +242,5 @@ $(document).ready(function () {
         }
     });
 });
+
+
