@@ -1,0 +1,113 @@
+﻿@model ProjectTaskViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="General2">
+    <div class="User">
+        Задачи
+    </div>
+    <div class="accountTable">
+        <div class="inAccountTable">Редактирование</div>
+        <form class="accountForm" action="~/Home/Adding" method="post">
+            <div>
+                <input type="hidden" class="input" name="id" value="@Model.Id">
+            </div>
+            <div>
+                <label for="name">Приоритет</label>
+                @*<input class="input" placeholder="Name" type="text" name="priority" value="@Model.Priority">*@
+                @if (Model.Priority == "в процессе")
+                {
+                    <select class="input" type="text" name="priority">
+                        <option value="@Model.Priority">
+                            в процессе
+                        </option>
+                        <option value="горит">
+                            горит
+                        </option>
+                        <option value="выполнена">
+                            выполнена
+                        </option>
+                    </select>
+                }
+                else if (Model.Priority == "горит")
+                {
+                    <select class="input" type="text" name="priority">
+                        <option value="@Model.Priority">
+                            горит
+                        </option>
+                        <option value="в процессе">
+                            в процессе
+                        </option>
+
+                        <option value="выполнена">
+                            выполнена
+                        </option>
+                    </select>
+                }
+                else
+                {
+                    <select class="input" type="text" name="priority">
+                        <option value="@Model.Priority">
+                            выполнена
+                        </option>
+                        <option value="горит">
+                            горит
+                        </option>
+                        <option value="в процессе">
+                            в процессе
+                        </option>
+                    </select>
+
+                }
+
+            </div>
+            <div>
+                <label for="email">Проект</label>
+                @*<input class="input" placeholder="Email" type="text" name="project" value="@Model.Project.Name">*@
+                <select name="project" class="input">
+                    <option value="@Model.Project.Name">
+                        @Model.Project.Name
+                    </option>
+
+                    @foreach(var item in Model.projectViewModels)
+                    {
+                    <option value="@item.Name">
+                        @item.Name
+                    </option>
+                    }
+
+                </select>
+            </div>
+            <div>
+                <label for="sername">Фамилия</label>
+                @*<input class="name" placeholder="Name" type="text" name="sername" value="@Model.User.SerName">*@
+                <select name="sername" class="input">
+                    <option value="@Model.User.SerName">
+                        @Model.User.SerName
+                    </option>
+
+                    @foreach (var item in Model.userViewModels)
+                    {
+                        <option value="@item.SerName">
+                            @item.SerName
+                        </option>
+                    }
+                </select>
+            </div>
+            <div>
+                <label for="name">Тема</label>
+                <input class="input" placeholder="Name" type="text" name="topic" value="@Model.Topic">
+            </div>
+            <div>
+                <label for="name">Тип</label>
+                <input class="input" placeholder="Name" type="text" name="type" value="@Model.Type">
+            </div>
+           
+            <div>
+                <input class="submit" type="submit" value="Save" style="margin: 0 -50px 0 0">
+            </div>
+        </form>
+    </div>
+</div> 

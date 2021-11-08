@@ -3,17 +3,55 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="General">
-    <div class="Users">
-        Ошибка
+<div class="General2">
+    <div class="User">
+        User
     </div>
-    <div class="divMenu">
-
+    <div class="accountTable">
+        <div class="inAccountTable">Account</div>
+        <form class="accountForm" action="~/Home/EditAccount?emaill=@ViewBag.Email&firstname=@ViewBag.FirstName&lastname=@ViewBag.LastName&dep=@ViewBag.Department" method="post">
+            <div>
+                <label for="name">Name</label>
+                <input class="input" placeholder="Name" type="text" name="name" value="@ViewBag.Name">
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input class="input" placeholder="Email" type="text" name="email" value="@ViewBag.Email">
+            </div>
+            <div>
+                <input class="submit" type="submit" value="Save">
+            </div>
+        </form>
     </div>
-    <div class="divTable">
-        <p style="font-size: 18px; line-height: 20px; text-align: center">Надо обязательно выделить одну из задач</p>
-
-        <input class="submitError" style="margin-left: 220px" type="submit" name="" value="Вернуться к выбору" onclick="document.location='/'">
-
+    <div class="profileTable">
+        <div class="inProfileTable">Profile</div>
+        <form class="profileForm" method="post" action="~/Home/EditNewProfile?depid=@ViewBag.DepId&lastnamee=@ViewBag.LastName">
+            <div>
+                <label for="name">FirstName</label>
+                <input class="input" placeholder="firstname" type="text" name="firstname" value="@ViewBag.FirstName">
+            </div>
+            <div>
+                <label for="email">LastName</label>
+                <input class="input" placeholder="lastname" type="text" name="lastname" value="@ViewBag.LastName">
+            </div>
+            <div>
+                <label for="department">Department</label>
+                <select name="dep">
+                    @if (ViewBag.Department == "HR")
+                    {
+                        <option selected>HR</option>
+                        <option>Accounting</option>
+                    }
+                    else
+                    {
+                        <option>HR</option>
+                        <option selected>Accounting</option>
+                    }
+                </select>
+            </div>
+            <div>
+                <input class="submit" type="submit" name="" value="Save">
+            </div>
+        </form>
     </div>
 </div>

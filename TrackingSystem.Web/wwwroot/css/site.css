@@ -33,7 +33,7 @@
 
 .accountTable {
     width: 620px;
-    height: 200px;
+    height: 400px;
     margin: 0px 15px 10px 15px;
     background-color: #ffffff;
     border: 1px solid grey;
@@ -79,7 +79,7 @@
 
 .input {
     display: inline-block;
-    float: right;
+    /*float: right;*/
     margin-right: 25px;
     width: 318px;
 }

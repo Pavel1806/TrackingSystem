@@ -38,15 +38,24 @@ $(function () {
             const values = [];
             table.querySelectorAll('tr').forEach((tr) => {
                 if (tr.classList.contains('selected')) {
-                    values.push(tr.children[1].textContent.trim());
+                    values.push(tr.children[0].textContent.trim(),
+                        tr.children[1].textContent.trim(),
+                        tr.children[2].textContent.trim(),
+                        tr.children[3].textContent.trim(),
+                        tr.children[4].textContent.trim(),
+                        tr.children[5].textContent.trim(),
+                        tr.children[6].textContent.trim(),
+                        tr.children[7].textContent.trim(),
+                        tr.children[8].textContent.trim()
+                    );
                 }
             });
             sendToServer(values);
         });
         //var r = window.location.href;
         function sendToServer(values) {
-            //console.log(values[0]);
-            var body = "email=" + values[0];
+            console.log(values);
+            var body = "id=" + values[0] + "&priority=" + values[1] + "&topic=" + values[5] + "&type=" + values[6] + "&nameproject=" + values[2] + "&sername=" + values[4] + "&userId=" + values[7] + "&projectId=" + values[8]; 
             document.location = "/home/edit?" + body;
         }
     }

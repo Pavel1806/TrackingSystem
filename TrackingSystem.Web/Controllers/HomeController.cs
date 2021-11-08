@@ -82,6 +82,46 @@ namespace TrackingSystem.Web.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
+        public IActionResult Edit(int id, string priority, string topic, string type, string nameproject, string sername, int userId, int projectId )
+        {
+            var project = _projectServices.GetAll();
+            var user = _userServices.GetAll();
+
+            var projectVW = new List<ProjectViewModel>();
+            foreach (var item in project)
+            {
+                if(item.Id != projectId)
+                {
+                    projectVW.Add(new ProjectViewModel { Id = item.Id, Name = item.Name });
+                }
+                
+            }
+            var userVW = new List<UserViewModel>();
+            foreach (var item in user)
+            {
+                if (item.Id != userId)
+                {
+                    userVW.Add(new UserViewModel { Id = item.Id, Name = item.Name, SerName = item.SerName });
+                }
+                    
+            }
+
+            ProjectTaskViewModel projectTaskView = new ProjectTaskViewModel
+            {
+                Id= id,
+                Priority = priority,
+                Topic = topic,
+                Type = type,
+                Project = new ProjectViewModel { Name = nameproject },
+                User = new UserViewModel { SerName = sername },
+                projectViewModels = projectVW,
+                userViewModels = userVW
+            };
+
+
+            return View(projectTaskView);
+        }
         public IActionResult Privacy()
         {
            
