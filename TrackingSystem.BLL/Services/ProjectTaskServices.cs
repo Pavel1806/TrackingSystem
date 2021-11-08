@@ -102,9 +102,16 @@ namespace TrackingSystem.BLL.Services
 
         public void Update(ProjectTaskDTO t)
         {
-            var projectTask = db.projects.GetById(t.Id);
+            var project = db.projects.GetById(t.projectId);
+            var user = db.users.GetById(t.userId);
+            var projectTask = db.projectTasks.GetById(t.Id);
 
-            //projectTask.Name = t.Name;
+            projectTask.Priority = t.Priority;
+            projectTask.Topic = t.Topic;
+            projectTask.Type = t.Type;
+            projectTask.project = project;
+            projectTask.user = user;
+            
             db.Save();
         }
     }

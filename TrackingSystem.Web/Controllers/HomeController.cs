@@ -113,14 +113,32 @@ namespace TrackingSystem.Web.Controllers
                 Priority = priority,
                 Topic = topic,
                 Type = type,
-                Project = new ProjectViewModel { Name = nameproject },
-                User = new UserViewModel { SerName = sername },
+                Project = new ProjectViewModel { Name = nameproject, Id= projectId },
+                User = new UserViewModel { SerName = sername, Id= userId },
                 projectViewModels = projectVW,
                 userViewModels = userVW
             };
 
 
             return View(projectTaskView);
+        }
+
+        public IActionResult Editing(int id, string priority, string topic, string type, string nameproject, int userId, int projectId)
+        {
+            
+            ProjectTaskDTO projectTask = new ProjectTaskDTO
+            {
+                Id = id,
+                Priority = priority,
+                Topic = topic,
+                Type = type,
+                projectId = projectId,
+                userId = userId
+            };
+            _projectTaskServices.Update(projectTask);
+
+
+            return RedirectToAction("Index", "Home");
         }
         public IActionResult Privacy()
         {

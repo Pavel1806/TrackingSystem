@@ -10,7 +10,7 @@
     </div>
     <div class="accountTable">
         <div class="inAccountTable">Редактирование</div>
-        <form class="accountForm" action="~/Home/Adding" method="post">
+        <form class="accountForm" action="~/Home/Editing" method="post">
             <div>
                 <input type="hidden" class="input" name="id" value="@Model.Id">
             </div>
@@ -66,14 +66,14 @@
             <div>
                 <label for="email">Проект</label>
                 @*<input class="input" placeholder="Email" type="text" name="project" value="@Model.Project.Name">*@
-                <select name="project" class="input">
-                    <option value="@Model.Project.Name">
+                <select name="projectId" class="input">
+                    <option value="@Model.Project.Id">
                         @Model.Project.Name
                     </option>
 
                     @foreach(var item in Model.projectViewModels)
                     {
-                    <option value="@item.Name">
+                    <option value="@item.Id">
                         @item.Name
                     </option>
                     }
@@ -83,14 +83,14 @@
             <div>
                 <label for="sername">Фамилия</label>
                 @*<input class="name" placeholder="Name" type="text" name="sername" value="@Model.User.SerName">*@
-                <select name="sername" class="input">
-                    <option value="@Model.User.SerName">
+                <select name="userId" class="input">
+                    <option value="@Model.User.Id">
                         @Model.User.SerName
                     </option>
 
                     @foreach (var item in Model.userViewModels)
                     {
-                        <option value="@item.SerName">
+                        <option value="@item.Id">
                             @item.SerName
                         </option>
                     }
